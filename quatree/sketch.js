@@ -7,7 +7,7 @@ var points = [];
 function setup() {
   createCanvas(WD_WIDTH, WD_HEIGHT)
 
-  for (let i = 0; i < 1000; i++){
+  for (let i = 0; i < 10000; i++){
     points.push(new Point(
       random(WD_WIDTH),
       random(WD_HEIGHT)

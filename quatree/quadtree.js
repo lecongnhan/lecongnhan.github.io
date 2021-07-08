@@ -26,14 +26,15 @@ class QuadTree{
 
     // reference https://yal.cc/rectangle-circle-intersection-test/
     _intersect(center, radius){
-        let nearestX = Math.max(this.position.x - this.width / 2, Math.min(center.x, this.width))
-        let nearestY = Math.max(this.position.y - this.height / 2, Math.min(center.y, this.height))
+        let pos = new Point(this.position.x - this.width / 2, this.position.y - this.height / 2)
+        let nearestX = Math.max(pos.x, Math.min(center.x, pos.x + this.width))
+        let nearestY = Math.max(pos.y, Math.min(center.y, pos.y + this.height))
         return Math.pow(center.x - nearestX, 2) + Math.pow(center.y - nearestY, 2) < Math.pow(radius, 2);
     }
 
     queryCircle(center, radius){
-        // if (!this._intersect(center, radius))
-        //     return [];
+        if (!this._intersect(center, radius))
+            return [];
 
         let result = [];
         for (let i = 0; i < this.points.length; i++){
