@@ -4,6 +4,21 @@ class Point{
     constructor(x, y){
         this.x = x;
         this.y = y;
+        this.vx = random(-40, 40);
+        this.vy = random(-40, 40);
+    }
+    update(dt){
+        this.x += this.vx * dt / 1000;
+        this.y += this.vy * dt / 1000;
+        
+        if (this.x <= 0 ||
+            this.x >= WD_WIDTH){
+            this.vx *= -1;
+        }
+        if (this.y <= 0 ||
+            this.y >= WD_HEIGHT){
+            this.vy *= -1;
+        }
     }
 }
 
@@ -120,7 +135,7 @@ class QuadTree{
 
     show(){
         this._drawBoundary();
-        this._drawPoints();  
+        // this._drawPoints();  
 
         if (this.devided){
             this.childI.show();
