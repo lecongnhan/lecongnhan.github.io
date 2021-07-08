@@ -11,12 +11,21 @@ class Point{
         this.x += this.vx * dt / 1000;
         this.y += this.vy * dt / 1000;
         
-        if (this.x <= 0 ||
-            this.x >= WD_WIDTH){
+        if (this.x <= 0){
+            this.x = 0;
             this.vx *= -1;
         }
-        if (this.y <= 0 ||
-            this.y >= WD_HEIGHT){
+        if (this.x >= WD_WIDTH) {
+            this.x = WD_WIDTH;
+            this.vx *= -1;
+        } 
+
+        if (this.y <= 0){
+            this.y = 0;
+            this.vy *= -1;
+        }
+        if (this.y >= WD_HEIGHT){
+            this.y = WD_HEIGHT;
             this.vy *= -1;
         }
     }
