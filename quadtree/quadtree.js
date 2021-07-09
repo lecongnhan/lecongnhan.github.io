@@ -1,11 +1,15 @@
 const CAPACITY = 4;
+const MAX_VELOCITY = 150;
+const POINT_RADIUS = 10;
 
 class Point{
     constructor(x, y){
         this.x = x;
         this.y = y;
-        this.vx = random(-40, 40);
-        this.vy = random(-40, 40);
+        this.vx = random(-MAX_VELOCITY, MAX_VELOCITY);
+        this.vy = random(-MAX_VELOCITY, MAX_VELOCITY);
+        this.radius = POINT_RADIUS;
+        this.collisionChecked = false;
     }
     update(dt){
         this.x += this.vx * dt / 1000;
@@ -28,6 +32,8 @@ class Point{
             this.y = WD_HEIGHT;
             this.vy *= -1;
         }
+
+        this.collisionChecked = false;
     }
 }
 
